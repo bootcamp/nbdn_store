@@ -13,20 +13,26 @@ namespace nothinbutdotnetstore.web.application
 
         public ViewSubDepartments()
             : this(new StubRepository(),
-            new StubResponseEngine(),1)
+            new StubResponseEngine())
         {
         }
 
-        public ViewSubDepartments(Repository repository, ResponseEngine response_engine, int deptId)
+        public ViewSubDepartments(Repository repository, ResponseEngine response_engine)
         {
             this.repository = repository;
             this.response_engine = response_engine;
-            Id = deptId;
+            
         }
 
         public void process(Request request)
         {
-            response_engine.prepare(repository.get_all_sub_depts_in_dept(Id));
+            get_dept_id();
+            response_engine.prepare(repository.get_all_sub_depts_in_dept(get_dept_id()));
+        }
+
+        private int get_dept_id()
+        {
+            return 1;
         }
     }
 }
