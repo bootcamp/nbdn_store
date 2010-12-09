@@ -26,7 +26,7 @@ namespace nothinbutdotnetstore.web.application
 
         public void process(Request request)
         {
-           // response_engine.prepare(repository.get_all_the_main_departments_in_the_store());
+            response_engine.prepare(repository.get_all_sub_depts_in_dept(Id));
         }
     }
 }
